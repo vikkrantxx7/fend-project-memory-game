@@ -1,7 +1,26 @@
 /*
  * Create a list that holds all of your cards
  */
-
+let front = '<li class="card"><i class="fa ';
+let back = '"></i></li>';
+let cardsList = [
+    `${front}fa-diamond${back}`,
+    `${front}fa-paper-plane-o${back}`,
+    `${front}fa-anchor${back}`,
+    `${front}fa-bolt${back}`,
+    `${front}fa-cube${back}`,
+    `${front}fa-anchor${back}`,
+    `${front}fa-leaf${back}`,
+    `${front}fa-bicycle${back}`,
+    `${front}fa-diamond${back}`,
+    `${front}fa-bomb${back}`,
+    `${front}fa-leaf${back}`,
+    `${front}fa-bomb${back}`,
+    `${front}fa-bolt${back}`,
+    `${front}fa-bicycle${back}`,
+    `${front}fa-paper-plane-o${back}`,
+    `${front}fa-cube${back}`,
+];
 
 /*
  * Display the cards on the page
@@ -10,6 +29,12 @@
  *   - add each card's HTML to the page
  */
 
+function displayCards(array){
+    let deck = document.querySelector('.deck'), cardsHTML;
+    cardsHTML = shuffle(array).join('');
+    deck.innerHTML = cardsHTML;
+}
+ 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -25,6 +50,9 @@ function shuffle(array) {
     return array;
 }
 
+document.addEventListener('DOMContentLoaded',function(){
+    displayCards(cardsList);
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:
