@@ -20,7 +20,7 @@ let cardsList = [
     front+'fa-paper-plane-o'+back,
     front+'fa-cube'+back,
 ];
-let openCardList = [];
+let openCardList = [], moves = document.getElementsByClassName('moves')[0], move = 0;
 
 /*
  * Display the cards on the page
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.querySelector('.deck').addEventListener('click', clickCard);
 
 function clickCard(event) {
-    if(event.target.tagName==='UL')
+    if(event.target.tagName==='UL' || event.target.tagName==='I' || event.target.classList.contains('open'))
         return;
     openCard(event.target);
 }
@@ -89,11 +89,13 @@ function removeHideCard() {
     hideCard.classList.remove('open');
 }
 
-//TODO: fix openCardList, close transition of second card
+//TODO: close transition of second card
 
 function checkCardInList(card) {
     let symbol1 = card.firstElementChild.classList[1];
     let symbol2 = openCardList[openCardList.length-1].firstElementChild.classList[1];
+    move++;
+    moves.textContent = ''+move+' '+((move === 1)?'Move':'Moves');
     // check = openCardList.some(function(item) {
     //     return item.firstElementChild.classList[1] === symbol;
     // });
