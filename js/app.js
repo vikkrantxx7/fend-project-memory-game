@@ -1,8 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-let front = '<li class="card"><i class="fa ';
-let back = '"></i></li>';
+let front = '<li class="card"><i class="fa ', back = '"></i></li>';
 let cardsList = [
     front+'fa-diamond'+back,
     front+'fa-paper-plane-o'+back,
@@ -21,6 +20,7 @@ let cardsList = [
     front+'fa-paper-plane-o'+back,
     front+'fa-cube'+back,
 ];
+let openCardList = [];
 
 /*
  * Display the cards on the page
@@ -74,4 +74,33 @@ function clickCard(event) {
 
 function openCard(card) {
     card.classList.add('open');
+    if(openCardList.length % 2 === 0)
+        addOpenCardToList(card);
+    else
+        checkCardInList(card);
+}
+
+function addOpenCardToList(card) {
+    openCardList.push(card);
+}
+
+function removeHideCard() {
+    let hideCard = openCardList.pop();
+    hideCard.classList.remove('open');
+}
+
+//TODO: fix openCardList, close transition of second card
+
+function checkCardInList(card) {
+    let symbol1 = card.firstElementChild.classList[1];
+    let symbol2 = openCardList[openCardList.length-1].firstElementChild.classList[1];
+    // check = openCardList.some(function(item) {
+    //     return item.firstElementChild.classList[1] === symbol;
+    // });
+    if(symbol1 === symbol2)
+        addOpenCardToList(card);
+    else {
+        removeHideCard();
+        card.classList.remove('open');
+    }
 }
