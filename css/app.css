@@ -109,3 +109,9 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+.score-panel .moves {
+    text-indent: 1em;
+    display: inline-block;
+    width: 100px;
+}

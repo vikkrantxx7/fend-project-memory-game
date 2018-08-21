@@ -70,6 +70,8 @@ function clickCard(event) {
     if(event.target.tagName==='UL' || event.target.tagName==='I' || event.target.classList.contains('open'))
         return;
     openCard(event.target);
+    if(move === 0)
+        startwatch();
 }
 
 function openCard(card) {
@@ -103,6 +105,20 @@ function checkCardInList(card) {
         addOpenCardToList(card);
     else {
         removeHideCard();
-        card.classList.remove('open');
+        // card.classList.remove('open');
     }
+}
+
+let seconds = 0, minutes = 0, clearTime;
+function startwatch() {
+    let getSec, getMin;
+    seconds++;
+    if(seconds === 60) {
+        minutes += 1;
+        seconds = 0;
+    }
+    getSec = (seconds < 10)?('0'+seconds):(''+seconds+'   ');
+    getMin = (minutes < 10)?('0'+minutes+':'):(''+minutes+':');
+    document.getElementsByClassName('stopwatch')[0].textContent = getMin+getSec;
+    clearTime = setTimeout(startwatch,1000);
 }
