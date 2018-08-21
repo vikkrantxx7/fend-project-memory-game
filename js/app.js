@@ -4,22 +4,22 @@
 let front = '<li class="card"><i class="fa ';
 let back = '"></i></li>';
 let cardsList = [
-    `${front}fa-diamond${back}`,
-    `${front}fa-paper-plane-o${back}`,
-    `${front}fa-anchor${back}`,
-    `${front}fa-bolt${back}`,
-    `${front}fa-cube${back}`,
-    `${front}fa-anchor${back}`,
-    `${front}fa-leaf${back}`,
-    `${front}fa-bicycle${back}`,
-    `${front}fa-diamond${back}`,
-    `${front}fa-bomb${back}`,
-    `${front}fa-leaf${back}`,
-    `${front}fa-bomb${back}`,
-    `${front}fa-bolt${back}`,
-    `${front}fa-bicycle${back}`,
-    `${front}fa-paper-plane-o${back}`,
-    `${front}fa-cube${back}`,
+    front+'fa-diamond'+back,
+    front+'fa-paper-plane-o'+back,
+    front+'fa-anchor'+back,
+    front+'fa-bolt'+back,
+    front+'fa-cube'+back,
+    front+'fa-anchor'+back,
+    front+'fa-leaf'+back,
+    front+'fa-bicycle'+back,
+    front+'fa-diamond'+back,
+    front+'fa-bomb'+back,
+    front+'fa-leaf'+back,
+    front+'fa-bomb'+back,
+    front+'fa-bolt'+back,
+    front+'fa-bicycle'+back,
+    front+'fa-paper-plane-o'+back,
+    front+'fa-cube'+back,
 ];
 
 /*
@@ -29,12 +29,12 @@ let cardsList = [
  *   - add each card's HTML to the page
  */
 
-function displayCards(array){
+function displayCards(array) {
     let deck = document.querySelector('.deck'), cardsHTML;
     cardsHTML = shuffle(array).join('');
     deck.innerHTML = cardsHTML;
 }
- 
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -50,7 +50,7 @@ function shuffle(array) {
     return array;
 }
 
-document.addEventListener('DOMContentLoaded',function(){
+document.addEventListener('DOMContentLoaded', function() {
     displayCards(cardsList);
 });
 
@@ -64,3 +64,14 @@ document.addEventListener('DOMContentLoaded',function(){
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+document.querySelector('.deck').addEventListener('click', clickCard);
+
+function clickCard(event) {
+    if(event.target.tagName==='UL')
+        return;
+    openCard(event.target);
+}
+
+function openCard(card) {
+    card.classList.add('open');
+}
