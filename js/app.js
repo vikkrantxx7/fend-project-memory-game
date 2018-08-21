@@ -75,6 +75,7 @@ function clickCard(event) {
 }
 
 function openCard(card) {
+    displayPopup();
     card.classList.add('open');
     if(openCardList.length % 2 === 0)
         addOpenCardToList(card);
@@ -91,8 +92,6 @@ function removeHideCard() {
     hideCard.classList.remove('open');
 }
 
-//TODO: close transition of second card
-
 function checkCardInList(card) {
     let symbol1 = card.firstElementChild.classList[1];
     let lastCard = openCardList[openCardList.length-1];
@@ -106,11 +105,14 @@ function checkCardInList(card) {
         addOpenCardToList(card);
         card.classList.add('match');
         lastCard.classList.add('match');
+        if(openCardList.length === 16)
+            displayPopup();
     }
     else {        
         setTimeout(()=>{
             removeHideCard();
-            card.classList.remove('open');},600);        
+            card.classList.remove('open');
+        },600);        
     }
 }
 
@@ -126,4 +128,12 @@ function startwatch() {
     getMin = (minutes < 10)?('0'+minutes+':'):(''+minutes+':');
     document.getElementsByClassName('stopwatch')[0].textContent = getMin+getSec;
     clearTime = setTimeout(startwatch,1000);
+}
+
+function displayPopup(){
+    let popup = document.getElementsByClassName('popup')[0];
+    popup.style.display = 'block';
+    setTimeout(function(){
+        popup.style.opacity = 1;
+    },100);
 }

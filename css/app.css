@@ -115,3 +115,52 @@ h1 {
     display: inline-block;
     width: 100px;
 }
+
+/*
+* Styles for congratulations popup
+*/
+.popup {
+    position: absolute;
+    top: 100px;
+    left:5%;
+    right:5%;
+    z-index: 1;
+    box-shadow: 0 0 100px 3px rgba(0, 0, 0, 0.3);
+    padding: 2px;
+    opacity: 0;
+    display: none;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.popup h2 {
+    width:fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popup .fa-gift {
+    color: #02ccba;
+    animation: glitter 0.2s ease-in-out 0 infinite alternate;
+}
+
+@keyframes glitter {
+    0% {
+        color: #02ccba;
+    }
+    20% {
+        color: #026acc;
+    }
+    40% {
+        color: #0216cc;
+    }
+    60% {
+        color: #7102cc;
+    }
+    80% {
+        color: #cc02aa;
+    }
+    100% {
+        color: #02cc4f;
+    }
+}
