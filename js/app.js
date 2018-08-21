@@ -95,17 +95,22 @@ function removeHideCard() {
 
 function checkCardInList(card) {
     let symbol1 = card.firstElementChild.classList[1];
-    let symbol2 = openCardList[openCardList.length-1].firstElementChild.classList[1];
+    let lastCard = openCardList[openCardList.length-1];
+    let symbol2 = lastCard.firstElementChild.classList[1];
     move++;
     moves.textContent = ''+move+' '+((move === 1)?'Move':'Moves');
     // check = openCardList.some(function(item) {
     //     return item.firstElementChild.classList[1] === symbol;
     // });
-    if(symbol1 === symbol2)
+    if(symbol1 === symbol2) {
         addOpenCardToList(card);
-    else {
-        removeHideCard();
-        // card.classList.remove('open');
+        card.classList.add('match');
+        lastCard.classList.add('match');
+    }
+    else {        
+        setTimeout(()=>{
+            removeHideCard();
+            card.classList.remove('open');},600);        
     }
 }
 
