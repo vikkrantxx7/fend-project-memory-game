@@ -75,7 +75,6 @@ function clickCard(event) {
 }
 
 function openCard(card) {
-    displayPopup();
     card.classList.add('open');
     if(openCardList.length % 2 === 0)
         addOpenCardToList(card);
@@ -105,8 +104,10 @@ function checkCardInList(card) {
         addOpenCardToList(card);
         card.classList.add('match');
         lastCard.classList.add('match');
-        if(openCardList.length === 16)
+        if(openCardList.length === 16) {
+            clearTimeout(clearTime);
             displayPopup();
+        }
     }
     else {        
         setTimeout(()=>{
@@ -135,5 +136,19 @@ function displayPopup(){
     popup.style.display = 'block';
     setTimeout(function(){
         popup.style.opacity = 1;
+    },100);
+    document.querySelector('.score').appendChild(document.querySelector('.stars').cloneNode(true));
+    document.querySelector('.move').textContent = document.querySelector('.moves').textContent;
+    document.querySelector('.time').textContent = document.querySelector('.stopwatch').textContent;
+}
+
+
+document.querySelector('button[name="close"]').addEventListener('click', closePopup);
+
+function closePopup() {
+    let popup = document.getElementsByClassName('popup')[0];
+    popup.style.display = 'none';
+    setTimeout(function(){
+        popup.style.opacity = 0;
     },100);
 }

@@ -93,14 +93,14 @@ h1 {
     margin-bottom: 10px;
 }
 
-.score-panel .stars {
+.stars {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars li {
+.stars li {
     list-style: none;
     display: inline-block;
 }
@@ -128,16 +128,17 @@ h1 {
     right:auto;
     border-radius: 10px;
     z-index: 1;
-    box-shadow: 0 0 300px 100px rgba(0, 0, 0, 0.425);
+    box-shadow: 0 0 200px 100px rgba(0, 0, 0, 0.61);
     padding: 2px;
     opacity: 0;
     display: none;
+    background-image: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     justify-content: center;
     transition: all 0.3s;
 }
 
 .popup .popup-content {
-    width:fit-content;
+    width: fit-content;
     margin-left: auto;
     margin-right: auto;
 }
@@ -155,9 +156,21 @@ h1 {
     margin-left: 0;
 }
 
-.popup .butt-contain {
+.score,
+.move,
+.time {
+    display: inline-block;
+}
+
+.move {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popup .content {
     display: flex;
     width: 300px;
+    margin-top: 50px;
 }
 
 .popup .fa-gift {
@@ -166,7 +179,7 @@ h1 {
 
 @keyframes glitter {
     0% {
-        color: #02ccba;
+        color: #c9cc02;
     }
     20% {
         color: #026acc;
