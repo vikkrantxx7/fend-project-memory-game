@@ -20,7 +20,7 @@ let cardsList = [
     front+'fa-paper-plane-o'+back,
     front+'fa-cube'+back,
 ];
-let openCardList = [];
+let openCardList = [], moves = document.getElementsByClassName('moves')[0], move = 0;
 
 /*
  * Display the cards on the page
@@ -67,12 +67,15 @@ document.addEventListener('DOMContentLoaded', function() {
 document.querySelector('.deck').addEventListener('click', clickCard);
 
 function clickCard(event) {
-    if(event.target.tagName==='UL')
+    if(event.target.tagName==='UL' || event.target.tagName==='I' || event.target.classList.contains('open'))
         return;
     openCard(event.target);
+    if(move === 0)
+        startwatch();
 }
 
 function openCard(card) {
+    displayPopup();
     card.classList.add('open');
     if(openCardList.length % 2 === 0)
         addOpenCardToList(card);
@@ -89,18 +92,48 @@ function removeHideCard() {
     hideCard.classList.remove('open');
 }
 
-//TODO: fix openCardList, close transition of second card
-
 function checkCardInList(card) {
     let symbol1 = card.firstElementChild.classList[1];
-    let symbol2 = openCardList[openCardList.length-1].firstElementChild.classList[1];
+    let lastCard = openCardList[openCardList.length-1];
+    let symbol2 = lastCard.firstElementChild.classList[1];
+    move++;
+    moves.textContent = ''+move+' '+((move === 1)?'Move':'Moves');
     // check = openCardList.some(function(item) {
     //     return item.firstElementChild.classList[1] === symbol;
     // });
-    if(symbol1 === symbol2)
+    if(symbol1 === symbol2) {
         addOpenCardToList(card);
-    else {
-        removeHideCard();
-        card.classList.remove('open');
+        card.classList.add('match');
+        lastCard.classList.add('match');
+        if(openCardList.length === 16)
+            displayPopup();
     }
+    else {        
+        setTimeout(()=>{
+            removeHideCard();
+            card.classList.remove('open');
+        },600);        
+    }
+}
+
+let seconds = 0, minutes = 0, clearTime;
+function startwatch() {
+    let getSec, getMin;
+    seconds++;
+    if(seconds === 60) {
+        minutes += 1;
+        seconds = 0;
+    }
+    getSec = (seconds < 10)?('0'+seconds):(''+seconds+'   ');
+    getMin = (minutes < 10)?('0'+minutes+':'):(''+minutes+':');
+    document.getElementsByClassName('stopwatch')[0].textContent = getMin+getSec;
+    clearTime = setTimeout(startwatch,1000);
+}
+
+function displayPopup(){
+    let popup = document.getElementsByClassName('popup')[0];
+    popup.style.display = 'block';
+    setTimeout(function(){
+        popup.style.opacity = 1;
+    },100);
 }

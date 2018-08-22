@@ -69,7 +69,7 @@ h1 {
 .deck .card.open {
     transform: rotateY(180deg);
     background: #02b3e4;
-    font-size: 2em;
+    font-size: 33px;
     cursor: default;
 }
 
@@ -108,4 +108,79 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+.score-panel .moves {
+    text-indent: 1em;
+    display: inline-block;
+    width: 100px;
+}
+
+/*
+* Styles for congratulations popup
+*/
+.popup {
+    position: absolute;
+    height: 680px;
+    width: 660px;
+    top: 113px;
+    left:auto;
+    right:auto;
+    border-radius: 10px;
+    z-index: 1;
+    box-shadow: 0 0 300px 100px rgba(0, 0, 0, 0.425);
+    padding: 2px;
+    opacity: 0;
+    display: none;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.popup .popup-content {
+    width:fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popup button {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    background-color: rgba(240, 248, 255, 0.315);
+    cursor: pointer;
+}
+
+.popup button[name="restart"] {
+    margin-left: 0;
+}
+
+.popup .butt-contain {
+    display: flex;
+    width: 300px;
+}
+
+.popup .fa-gift {
+    animation: glitter 3s ease-in-out infinite alternate;
+}
+
+@keyframes glitter {
+    0% {
+        color: #02ccba;
+    }
+    20% {
+        color: #026acc;
+    }
+    40% {
+        color: #0216cc;
+    }
+    60% {
+        color: #7102cc;
+    }
+    80% {
+        color: #cc02aa;
+    }
+    100% {
+        color: #02cc4f;
+    }
 }
