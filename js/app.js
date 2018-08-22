@@ -152,3 +152,10 @@ function closePopup() {
         popup.style.opacity = 0;
     },100);
 }
+
+document.querySelector('.restart').addEventListener('click', restart);
+document.querySelector('button[name="restart"]').addEventListener('click', restart);
+
+function restart() {
+    location.reload(true);
+}
