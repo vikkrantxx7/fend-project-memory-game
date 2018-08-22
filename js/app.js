@@ -96,10 +96,11 @@ function checkCardInList(card) {
     let lastCard = openCardList[openCardList.length-1];
     let symbol2 = lastCard.firstElementChild.classList[1];
     move++;
+    if(move === 15)
+        twoRating();
+    if(move === 20)
+        oneRating();
     moves.textContent = ''+move+' '+((move === 1)?'Move':'Moves');
-    // check = openCardList.some(function(item) {
-    //     return item.firstElementChild.classList[1] === symbol;
-    // });
     if(symbol1 === symbol2) {
         addOpenCardToList(card);
         card.classList.add('match');
@@ -158,4 +159,14 @@ document.querySelector('button[name="restart"]').addEventListener('click', resta
 
 function restart() {
     location.reload(true);
+}
+
+function twoRating() {
+    document.querySelectorAll('.stars li')[2].firstElementChild.classList.remove('fa-star');
+    document.querySelectorAll('.stars li')[2].firstElementChild.classList.add('fa-star-o');
+}
+
+function oneRating() {
+    document.querySelectorAll('.stars li')[1].firstElementChild.classList.remove('fa-star');
+    document.querySelectorAll('.stars li')[1].firstElementChild.classList.add('fa-star-o');
 }
