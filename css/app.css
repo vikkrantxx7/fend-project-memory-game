@@ -53,8 +53,8 @@ h1 {
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
+    height: 120px;
+    width: 120px;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -144,7 +144,7 @@ h1 {
 */
 .popup {
     position: absolute;
-    height: 680px;
+    height: 730px;
     width: 660px;
     top: 113px;
     left:auto;
