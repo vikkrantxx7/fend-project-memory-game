@@ -46,7 +46,6 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
@@ -86,11 +85,13 @@ function addOpenCardToList(card) {
     openCardList.push(card);
 }
 
+//remove the card from list and hide if mismatch occurs
 function removeHideCard() {
     let hideCard = openCardList.pop();
-    hideCard.classList.remove('open');
+    hideCard.classList.remove('open','mismatch');
 }
 
+//check if the clicked card is in the open card list
 function checkCardInList(card) {
     let symbol1 = card.firstElementChild.classList[1];
     let lastCard = openCardList[openCardList.length-1];
@@ -109,12 +110,15 @@ function checkCardInList(card) {
             clearTimeout(clearTime);
             displayPopup();
         }
-    }
-    else {        
+    } else { //if card is not in the list set mismatch class to animate
+        setTimeout(()=>{
+            openCardList[openCardList.length-1].classList.add('mismatch');
+            card.classList.add('mismatch');
+        },100);
         setTimeout(()=>{
             removeHideCard();
-            card.classList.remove('open');
-        },600);        
+            card.classList.remove('open','mismatch');
+        },400);
     }
 }
 
@@ -154,6 +158,7 @@ function closePopup() {
     },100);
 }
 
+//Restart functionality
 document.querySelector('.restart').addEventListener('click', restart);
 document.querySelector('button[name="restart"]').addEventListener('click', restart);
 
@@ -161,6 +166,7 @@ function restart() {
     location.reload(true);
 }
 
+// Star Rating
 function twoRating() {
     document.querySelectorAll('.stars li')[2].firstElementChild.classList.remove('fa-star');
     document.querySelectorAll('.stars li')[2].firstElementChild.classList.add('fa-star-o');

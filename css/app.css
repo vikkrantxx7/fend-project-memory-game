@@ -29,8 +29,9 @@ body {
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-family: "Uncial Antiqua", Coda, 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 3em;
 }
 
 /*
@@ -73,8 +74,30 @@ h1 {
     cursor: default;
 }
 
-.deck .card.show {
-    font-size: 33px;
+.deck .card.mismatch {
+    background: linear-gradient(-160deg, #cc0213 0%, #cd947e 100%);
+    animation: mismatch 0.3s linear;
+}
+
+@keyframes mismatch {    
+    0% {
+        transform: translateX(5px);
+    }
+    20% {
+        transform: translateX(-10px);
+    }
+    40% {
+        transform: translateX(10px);
+    }
+    60% {
+        transform: translateX(-10px);
+    }
+    80% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(-5px);
+    }
 }
 
 .deck .card.match {
@@ -138,6 +161,7 @@ h1 {
 }
 
 .popup .popup-content {
+    font-family: "Uncial Antiqua", sans-serif;
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
@@ -168,6 +192,7 @@ h1 {
 }
 
 .popup .content {
+    font-family: sans-serif;
     display: flex;
     width: 300px;
     margin-top: 50px;
