@@ -1,24 +1,24 @@
 /*
  * Create a list that holds all of your cards
  */
-let front = '<li class="card"><i class="fa ', back = '"></i></li>';
+let front = '<li class="card"><i class="fa fa-', back = '"></i></li>';
 let cardsList = [
-    front+'fa-diamond'+back,
-    front+'fa-paper-plane-o'+back,
-    front+'fa-anchor'+back,
-    front+'fa-bolt'+back,
-    front+'fa-cube'+back,
-    front+'fa-anchor'+back,
-    front+'fa-leaf'+back,
-    front+'fa-bicycle'+back,
-    front+'fa-diamond'+back,
-    front+'fa-bomb'+back,
-    front+'fa-leaf'+back,
-    front+'fa-bomb'+back,
-    front+'fa-bolt'+back,
-    front+'fa-bicycle'+back,
-    front+'fa-paper-plane-o'+back,
-    front+'fa-cube'+back,
+    'diamond',
+    'paper-plane-o',
+    'anchor',
+    'bolt',
+    'cube',
+    'anchor',
+    'leaf',
+    'bicycle',
+    'diamond',
+    'bomb',
+    'leaf',
+    'bomb',
+    'bolt',
+    'bicycle',
+    'paper-plane-o',
+    'cube',
 ];
 let openCardList = [], moves = document.getElementsByClassName('moves')[0], move = 0;
 
@@ -30,8 +30,11 @@ let openCardList = [], moves = document.getElementsByClassName('moves')[0], move
  */
 
 function displayCards(array) {
-    let deck = document.querySelector('.deck'), cardsHTML;
-    cardsHTML = shuffle(array).join('');
+    let deck = document.querySelector('.deck'), cardsHTML, cardsArray;
+    cardsArray = shuffle(array).map(function(item) {
+        return front+item+back;
+    });
+    cardsHTML = cardsArray.join('');
     deck.innerHTML = cardsHTML;
 }
 

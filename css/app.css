@@ -22,6 +22,9 @@ body {
 }
 
 .container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,22 +42,23 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
+    width: 100%;
+    max-width: 500px;
+    min-height: 500px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
+    padding: 2%;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 0 0 3em;
 }
 
 .deck .card {
-    height: 120px;
-    width: 120px;
+    height: 90px;
+    width: 23%;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -70,7 +74,7 @@ h1 {
 .deck .card.open {
     transform: rotateY(180deg);
     background: #02b3e4;
-    font-size: 33px;
+    font-size: 28px;
     cursor: default;
 }
 
@@ -103,7 +107,7 @@ h1 {
 .deck .card.match {
     cursor: default;
     background: #02ccba;
-    font-size: 33px;
+    font-size: 28px;
 }
 
 /*
@@ -112,7 +116,7 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 40%;
     margin-bottom: 10px;
 }
 
@@ -144,9 +148,9 @@ h1 {
 */
 .popup {
     position: absolute;
-    height: 730px;
-    width: 660px;
-    top: 113px;
+    height: 600px;
+    width: 90%;
+    top: 150px;
     left:auto;
     right:auto;
     border-radius: 10px;
